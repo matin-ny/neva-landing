@@ -136,6 +136,10 @@ p { color: #444; font-size: 1.1rem; line-height: 1.8; }
     }
     #widget-protein {
         top: 20%; /* ارتفاع دلخواه فقط برای صفحه نمایش موبایل */
+        margin-right:-15% ;
+    }
+    #widget-kcal {
+        top: 20%;
         margin-right:-10% ;
     }
     /* تنظیم ارتفاع همان ویجت برای موبایل */
@@ -145,6 +149,7 @@ p { color: #444; font-size: 1.1rem; line-height: 1.8; }
     /* تنظیم جایگاه ویجت هدف برای موبایل */
     #widget-goal {
         top: 28%; /* ارتفاع مناسب برای موبایل تا روی منو نیاید */
+        margin-left:-10% ;
     }
 }
 

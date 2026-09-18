@@ -49,7 +49,7 @@ const screenMaterial = new THREE.MeshBasicMaterial({ map: tex1, transparent: tru
 const phoneGroup = new THREE.Group();
 scene.add(phoneGroup);
 
-const screenWidth = 1.72; 
+const screenWidth = 1.5; 
 const screenHeight = screenWidth * (1504 / 726);
 const screenMesh = new THREE.Mesh(new THREE.PlaneGeometry(screenWidth, screenHeight), screenMaterial);
 phoneGroup.add(screenMesh);
