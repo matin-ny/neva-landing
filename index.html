@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- عنوان اصلی سایت -->
+    <title>نِوا (Neva) | دستیار هوشمند تناسب اندام و کالری‌شمار</title>
+    
+    <!-- توضیحات متا (تمرکز روی فیتنس و ریتم بدن) -->
+    <meta name="description" content="اپلیکیشن نِوا؛ ریتم جدید بدن شما. با هوش مصنوعی پیشرفته کالری‌ها و درشت‌مغذی‌های خود را مدیریت کنید و با برنامه‌های اختصاصی به هدف تناسب اندام خود برسید.">
+    
+    <!-- کلمات کلیدی (مرتبط با کالری‌شماری و فیتنس) -->
+    <meta name="keywords" content="کالری شمار هوشمند, تناسب اندام, رژیم غذایی, دستیار هوش مصنوعی فیتنس, محاسبه درشت مغذی ها, برنامه ورزشی و تغذیه, کاهش وزن, اپلیکیشن نِوا">
+    
+    <!-- تگ‌های Open Graph (برای نمایش زیبا در شبکه‌های اجتماعی) -->
+    <meta property="og:title" content="نِوا (Neva) | ریتم جدید بدن شما">
+    <meta property="og:description" content="تجربه‌ای متفاوت از کالری‌شماری. مسیر تناسب اندام خود را با تحلیلگر هوشمند تصاویر و برنامه‌ریزی دقیق درشت‌مغذی‌ها آغاز کنید.">
+    <meta property="og:image" content="لینک-عکس-کاور-سایت.jpg">
+    <meta property="og:url" content="https://nevaapp.ir/">
+    <meta property="og:type" content="website">
+    
+    <!-- تنظیمات رنگ مرورگر برای گوشی‌ها -->
+    <meta name="theme-color" content="#87CEEB">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <!-- هاله‌های نوری -->
+    <div class="blob-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <!-- تایپوگرافی پس زمینه -->
+    <div class="marquee-bg">
+        <div class="marquee marquee-right">NEVA RHYTHM NEVA RHYTHM NEVA RHYTHM NEVA RHYTHM</div>
+        <div class="marquee marquee-left">SMART CALORIE TRACKER SMART CALORIE TRACKER</div>
+    </div>
+
+    <canvas id="webgl-canvas"></canvas>
+
+    <header class="navbar">
+        <a href="#" class="pwa-btn">ورود به وب‌اپلیکیشن</a>
+    </header>
+
+    <div id="scroll-container"></div>
+
+    <div class="ui-container">
+        
+        <section class="section panel-0">
+            <div class="brand-center">
+                <h1 class="logo-large">Neva</h1>
+                <p class="slogan">Your new body rythem</p>
+            </div>
+        </section>
+
+        <section class="section panel-1">
+            <div class="content-box right-side">
+                <h2>فقط عکس بگیر، بقیش با نِوا.</h2>
+                <p>بدون نیاز به جستجوی دستی و تایپ کردن. با پیشرفته‌ترین اسکنر تصویری، کالری و درشت‌مغذی‌های هر وعده را تنها با یک عکس ثبت کنید. مدیریت تغذیه، حالا به سادگی یک کلیک است.</p>
+            </div>
+        </section>
+
+        <section class="section panel-2">
+            <!-- =================================================== -->
+            <!-- 🟢 بخش 1: ویجت‌های شناور (مرحله 2) -->
+            <!-- =================================================== -->
+            <div class="floating-widget widget-left" style="top: 25%;">🔥 1678 kcal</div>
+            <!-- استایل inline پاک شد و id اضافه شد -->
+            <!-- =================================================== -->
+
+            <div class="content-box right-side">
+                <h2>از قورمه‌سبزی تا آیتم های سوپرمارکتی.</h2>
+                <p>به کامل‌ترین دیتابیس اطلاعات غذایی متصل شوید. بیش از ۱۰۰۰ نوع غذای بومی، سنتی و محصولات بسته‌بندی‌شده در جیب شماست تا هیچ کالری‌ای از قلم نیفتد.</p>
+                </div>
+        </section>
+
+        <section class="section panel-3">
+            <div class="floating-widget widget-left" style="top: 35%;"> AI Plan</div>
+            <div class="floating-widget widget-right" id="widget-goal">
+    🎯 Goal: -2kg
+</div>
+
+            <div class="content-box right-side">
+                <h2>مربی هوشمند و برنامه اختصاصی</h2>
+                <p>نِوا به جای شما فکر می‌کند. بر اساس هدف، وزن و سلیقه‌ی غذایی‌تان، هر روز یک برنامه تغذیه‌ی کاملاً شخصی‌سازی‌شده و هوشمند دریافت کنید. مسیرِ رسیدن به هدف، از همیشه روشن‌تر است.</p>
+            </div>
+        </section>
+
+        <section class="section panel-4">
+            <div class="floating-widget widget-left" id="widget-protein">
+    🥗 24g+ Protein
+</div>
+            <div class="floating-widget widget-right" style="top: 40%; animation-delay: 0.8s;">⏱ 15 Min</div>
+
+            <div class="content-box right-side">
+                <h2>دنیایی از رسپی‌های خوشمزه و رژیمی.</h2>
+                <p>رژیم گرفتن به معنای محرومیت و گرسنگی نیست. به مجموعه‌ای بی‌نظیر از دستور پخت‌های سالم، متنوع و خوش‌طعم با محاسبه خودکار کالری دسترسی داشته باشید و لذت ببرید.</p>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="main.js"></script>
+
+    <!-- ========================================== -->
+    <!-- 🟢 شروع بخش محتوای استاتیک (اسکرول عادی) -->
+    <!-- ========================================== -->
+    <main class="static-content">
+        
+        <!-- بخش دریافت اپلیکیشن -->
+        <section class="app-download">
+            <div class="container">
+                <h2 class="section-title">دریافت اپلیکیشن نِوا</h2>
+                <p class="section-subtitle">دسترسی سریع و آسان برای تمامی پلتفرم‌ها</p>
+                
+                <div class="download-grid">
+                    
+                    <!-- 🟢 کارت پریمیوم اندروید -->
+                    <div class="premium-download-card">
+                        <div class="card-icon-wrapper android-icon">
+                            <!-- آیکون وکتور اندروید -->
+                            <svg viewBox="0 0 24 24"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993.0004.5511-.4482.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m11.4045-6.02l1.9973-3.4592c.1158-.2016.0461-.4583-.155-.5741-.203-.1162-.4587-.0461-.5741.155L17.081 8.9953c-1.4072-.6438-2.9922-1.0093-4.6643-1.0093s-3.2575.3655-4.6648 1.0093L5.6835 5.4431c-.1144-.2011-.3707-.2713-.5737-.155-.2016.1158-.2718.3725-.1555.5741l1.9973 3.4592C2.6865 11.6622.38 15.5398.0776 20h23.8449c-.3024-4.4602-2.6089-8.3378-6.8741-10.6786"/></svg>
+                        </div>
+                        <h3>کاربران اندروید</h3>
+                        <p class="card-desc">اپلیکیشن نِوا را همین حالا به صورت مستقیم دریافت کنید و ریتم جدید بدن خود را بسازید.</p>
+                        
+                        <a href="#" class="btn-solid dl-btn">دانلود مستقیم اپلیکیشن</a>
+                        
+                        <div class="market-note">
+                            <span class="note-icon">💡</span>
+                            <p>همچنین می‌توانید با جستجوی کلمه <strong>Neva</strong> در مارکت‌های <strong>کافه‌بازار</strong> و <strong>گوگل‌پلی</strong>، اپلیکیشن را به راحتی نصب کنید.</p>
+                        </div>
+                    </div>
+
+                    <!-- 🟢 کارت پریمیوم iOS -->
+                    <div class="premium-download-card">
+                        <div class="card-icon-wrapper ios-icon">
+                            <!-- آیکون وکتور اپل -->
+                            <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13.12 4.23c.73-.91 1.22-2.18 1.09-3.43-1.08.04-2.43.72-3.19 1.63-.68.8-1.26 2.1-1.11 3.33 1.21.09 2.47-.63 3.21-1.53z"/></svg>
+                        </div>
+                        <h3>کاربران iOS (آیفون)</h3>
+                        <p class="card-desc">بدون نیاز به اپ‌استور، وب‌اپلیکیشن Neva را تنها در ۳ قدم ساده نصب کنید.</p>
+                        
+                        <div class="pwa-steps-premium">
+                            <div class="step-premium">
+                                <span class="step-num-premium">1</span>
+                                <span>سایت را در مرورگر <strong>Safari</strong> باز کنید.</span>
+                            </div>
+                            <div class="step-premium">
+                                <span class="step-num-premium">2</span>
+                                <span>در نوار پایین، روی آیکون <strong>Share</strong> بزنید.</span>
+                            </div>
+                            <div class="step-premium">
+                                <span class="step-num-premium">3</span>
+                                <span>گزینه <strong>Add to Home Screen</strong> را انتخاب کنید.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- بخش پلن‌های اشتراک -->
+        <section class="pricing">
+            <div class="container">
+                <h2 class="section-title">شروع مسیر تناسب اندام</h2>
+                <p class="section-subtitle">با توجه به نیاز خود، بهترین گزینه را انتخاب کنید.</p>
+                <h2 class="premium-note">(اشتراک پریمیوم را از داخل برنامه تهیه کنید)</h2>
+                
+                <div class="pricing-grid">
+                    <!-- پلن رایگان -->
+                    <div class="pricing-card free-plan">
+                        <h3>نسخه پایه</h3>
+                        <div class="price">رایگان</div>
+                        <ul class="features">
+                            <li> دسترسی به دیتابیس جامع غذاها و رسپی‌های سالم</li>
+                            <li> کالری‌شمار و ثبت وعده‌های روزانه</li>
+                            <li> نمودار پایش روند وزن و پیشرفت</li>
+                            <li> دارای تبلیغات درون‌برنامه‌ای</li>
+                        </ul>
+                    </div>
+
+                    <!-- پلن پریمیوم -->
+                    <div class="pricing-card premium-plan">
+                        <div class="badge">پیشنهاد ویژه</div>
+                        <h3>نسخه پریمیوم</h3>
+                        <div class="price">خرید اشتراک</div>
+                        <ul class="features">
+                            <li> تمام امکانات نسخه پایه</li>
+                            <li> <strong>اسکن هوشمند غذا با دوربین (AI)</strong></li>
+                            <li> <strong>برنامه‌ریزی تغذیه شخصی‌سازی شده</strong></li>
+                            <li> <strong>تجربه کاملاً بدون تبلیغات</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- بخش دعوت به اقدام (CTA) -->
+        <section class="final-cta">
+            <div class="cta-content">
+                <h1 class="logo-large">Neva</h1>
+                <p class="slogan">Your new body rythem</p>
+                <a href="#" class="btn-solid large-btn mt-4">ورود به وب‌ اپلیکیشن</a>
+            </div>
+        </section>
+
+        <!-- فوتر -->
+        <footer class="footer">
+            <div class="container footer-flex">
+                <div class="footer-logo">Neva</div>
+                <div class="footer-links">
+                    <!-- استفاده از onclick مستقیم برای اجرای قطعی -->
+                    <a href="javascript:void(0)" onclick="openModal('modal-terms')">قوانین و مقررات</a>
+                    <a href="javascript:void(0)" onclick="openModal('modal-privacy')">حریم خصوصی</a>
+                    <a href="javascript:void(0)" onclick="openModal('modal-contact')">تماس با ما</a>
+                </div>
+                <div class="footer-social">
+                    <span>© 2026 تمامی حقوق برای نِوا محفوظ است.</span>
+                </div>
+            </div>
+        </footer>
+
+    </main> <!-- 🔴 پایان بخش استاتیک سایت -->
+
+
+    <!-- ========================================== -->
+    <!-- 🟢 پاپ‌آپ‌های فوتر (کاملاً مستقل از بقیه سایت) -->
+    <!-- ========================================== -->
+    <div class="modal-overlay" id="modal-overlay" onclick="closeAllModals(event)">
+        
+        <!-- 1. مودال تماس با ما -->
+        <div class="modal-box" id="modal-contact">
+            <button class="modal-close" onclick="closeAllModals()">&times;</button>
+            <h2 class="modal-title">ارتباط با نِوا</h2>
+            <p class="modal-desc">ما در تیم نِوا مشتاقانه منتظر شنیدن نظرات و پیشنهادات شما هستیم تا بتوانیم تجربه‌ی بهتری برایتان خلق کنیم.</p>
+            <ul class="modal-list">
+                <li>✉️ <strong>ارسال نظرات و پیشنهادات:</strong> support@nevaapp.ir</li>
+                <li>🤝 <strong>همکاری و توسعه:</strong> info@nevaapp.ir</li>
+                <li>💬 <strong>پشتیبانی (تلگرام):</strong> NevaSupport@</li>
+                <li>📱 <strong>اینستاگرام (ترفندها):</strong> Neva.App@</li>
+            </ul>
+        </div>
+
+        <!-- 2. مودال حریم خصوصی -->
+        <div class="modal-box" id="modal-privacy">
+            <button class="modal-close" onclick="closeAllModals()">&times;</button>
+            <h2 class="modal-title">حریم خصوصی شما</h2>
+            <div class="modal-scroll-content">
+                <p><strong>چه اطلاعاتی را جمع‌آوری می‌کنیم؟</strong><br>برای ارائه بهترین برنامه‌های غذایی، ما اطلاعات پایه‌ای مانند وزن، قد، سن و اهداف تناسب اندام شما را دریافت می‌کنیم.</p>
+                <p><strong>دسترسی به دوربین و تصاویر:</strong><br>تصاویری که برای تحلیل به هوش مصنوعی نِوا ارسال می‌کنید، صرفاً جهت استخراج اطلاعات درشت‌مغذی‌ها پردازش شده و در سرورهای عمومی منتشر نمی‌شوند.</p>
+                <p><strong>امنیت داده‌ها:</strong><br>تمامی اطلاعات سلامت و دیتابیس رژیم‌های شما در زیرساخت‌های ابری ایمن و رمزنگاری‌شده نگهداری می‌شوند تا از بالاترین سطح امنیت برخوردار باشند.</p>
+                <p><strong>عدم فروش اطلاعات:</strong><br>نِوا به هیچ‌وجه اطلاعات شخصی شما را در اختیار شرکت‌های تبلیغاتی قرار نمی‌دهد.</p>
+            </div>
+        </div>
+
+        <!-- 3. مودال قوانین و مقررات -->
+        <div class="modal-box" id="modal-terms">
+            <button class="modal-close" onclick="closeAllModals()">&times;</button>
+            <h2 class="modal-title">شرایط و قوانین استفاده</h2>
+            <div class="modal-scroll-content">
+                <p>✔️ <strong>سلب مسئولیت پزشکی:</strong> نِوا یک دستیار هوشمند است. الگوریتم‌های ما جایگزین توصیه‌های پزشک نیستند. کاربرانی که شرایط پزشکی خاص دارند، باید با پزشک مشورت کنند.</p>
+                <p>✔️ <strong>پرداخت و اشتراک‌ها:</strong> تهیه اشتراک پریمیوم برای استفاده از قابلیت‌های AI الزامی است. تراکنش‌ها از طریق درگاه‌ پرداخت امن زرین‌پال انجام شده و امنیت آن بر عهده درگاه واسط می‌باشد.</p>
+                <p>✔️ <strong>دقت هوش مصنوعی:</strong> اسکنر تصویری نِوا ممکن است در تشخیص ترکیبات برخی غذاهای پیچیده سنتی دچار خطای جزئی شود. کاربر می‌تواند مقادیر را به صورت دستی ویرایش کند.</p>
+                <p>✔️ <strong>حفظ حقوق معنوی:</strong> تمامی حقوق مادی، معنوی، کدهای اپلیکیشن و دیتابیس بومی، متعلق به پلتفرم نِوا بوده و کپی‌برداری پیگرد قانونی دارد.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 🟢 اسکریپت اختصاصی و ایزوله پاپ آپ ها -->
+    <script>
+        function openModal(id) {
+            document.getElementById('modal-overlay').classList.add('active');
+            document.getElementById(id).classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeAllModals(event) {
+            // جلوگیری از بسته شدن مودال وقتی روی خود باکس سفید کلیک میشود
+            if (event && event.target.closest('.modal-box') && !event.target.classList.contains('modal-close')) {
+                return; 
+            }
+            document.getElementById('modal-overlay').classList.remove('active');
+            document.querySelectorAll('.modal-box').forEach(box => box.classList.remove('active'));
+            document.body.style.overflow = 'auto'; 
+        }
+    </script>
+    <!-- ========================================== -->
+
+
+    <!-- اسکریپت‌های اصلی سایت -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,324 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap');
+@import url('https://v1.fontapi.ir/css/Vazir');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background-color: #fcfdfd; overflow-x: hidden; font-family: 'Vazir', sans-serif; }
+
+/* --- هاله‌های نوری (تنظیمات پایه دسکتاپ) --- */
+.blob-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -3; overflow: hidden; pointer-events: none; }
+.blob { 
+    position: absolute; 
+    border-radius: 50%; 
+    filter: blur(100px); 
+    opacity: 0.5; 
+    animation: floatBlob 10s infinite alternate ease-in-out; 
+}
+.blob-1 { width: 50vw; height: 50vw; background: #87CEEB; top: -10%; left: -10%; }
+.blob-2 { width: 45vw; height: 45vw; background: #e0f7fa; bottom: -10%; right: -10%; animation-delay: -5s; }
+@keyframes floatBlob { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(8vw, 8vh) scale(1.2); } }
+
+/* --- واترمارک --- */
+.marquee-bg { position: fixed; top: 50%; left: 0; width: 100vw; transform: translateY(-50%); z-index: -2; pointer-events: none; overflow: hidden; display: flex; flex-direction: column; gap: 2vh; }
+.marquee { font-family: 'Nunito', sans-serif; font-size: 14vw; font-weight: 900; white-space: nowrap; color: transparent; -webkit-text-stroke: 2px rgba(135, 206, 235, 0.2); text-transform: uppercase; }
+
+#webgl-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; }
+.navbar { position: fixed; top: 0; width: 100%; display: flex; justify-content: flex-start; padding: 20px 5%; z-index: 10; }
+.pwa-btn { background-color: #87CEEB; color: white; padding: 10px 24px; border-radius: 30px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(135, 206, 235, 0.4); transition: all 0.3s ease; }
+
+#scroll-container { height: 750vh; }
+.ui-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 5; }
+.section { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; }
+.panel-0 { display: flex; align-items: center; justify-content: center; opacity: 1; }
+.brand-center { text-align: center; }
+
+.logo-large { font-family: 'Nunito', sans-serif; font-size: 7.5rem; font-weight: 900; color: #87CEEB; margin-bottom: 5px; letter-spacing: -2px; }
+.slogan { font-family: 'Nunito', sans-serif; font-size: 1.8rem; font-weight: 700; color: #555; direction: ltr; }
+
+/* --- باکس متن --- */
+.content-box { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); padding: 40px; border-radius: 24px; width: 40%; min-width: 320px; max-width: 450px; box-shadow: 0 10px 50px rgba(135, 206, 235, 0.2); pointer-events: auto; }
+.right-side { right: 8%; text-align: right; }
+h2 { color: #87CEEB; margin-bottom: 15px; font-size: 1.8rem; font-weight: 800; }
+p { color: #444; font-size: 1.1rem; line-height: 1.8; }
+.macro-colors { display: flex; gap: 15px; margin-top: 20px; justify-content: flex-start; }
+.dot { width: 24px; height: 24px; border-radius: 50%; }
+.dot.red { background-color: #FF5252; }
+.dot.blue { background-color: #448AFF; }
+.dot.orange { background-color: #FF9800; }
+
+/* --- ویجت‌های شناور --- */
+.floating-widget {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    padding: 12px 20px;
+    border-radius: 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #444;
+    box-shadow: 0 15px 35px rgba(135, 206, 235, 0.15);
+    pointer-events: none;
+    animation: bounceWidget 4s infinite alternate ease-in-out;
+    white-space: nowrap;
+}
+/* جایگاه ویجت‌ها در دسکتاپ (گوشی سمت چپ صفحه است) */
+/* دسکتاپ: موقعیت‌یابی ریاضی متصل به لبه‌های اسکرین‌شات */
+.floating-widget.widget-left {
+    right: var(--widget-left-pos); /* چسبیدن دقیق به سمت چپِ گوشی با فاصله ۲۵ پیکسل */
+    left: auto;
+}
+.floating-widget.widget-right {
+    left: var(--widget-right-pos); /* چسبیدن دقیق به سمت راستِ گوشی با فاصله ۲۵ پیکسل */
+    right: auto;
+}
+/* تنظیم ارتفاع اختصاصی برای ویجت بالایی در دسکتاپ */
+#widget-top-right {
+    top: 55%;
+}
+/* تنظیم دستی جایگاه ویجت پروتئین در دسکتاپ */
+#widget-protein {
+    top: 35%; /* تغییر این عدد برای بالا و پایین بردن (مثلاً 20% یا 50%) */
+    
+    /* اگر می‌خواهید کمی به گوشی نزدیک‌تر یا دورتر شود: */
+    /* transform: translateX(15px); */ /* عدد مثبت = حرکت به راست (نزدیک گوشی) / عدد منفی = حرکت به چپ */
+}
+/* تنظیم دستی جایگاه ویجت هدف در دسکتاپ */
+#widget-goal {
+    top: 45%; /* با تغییر این عدد، ویجت را بالا و پایین کنید */
+    
+    /* در صورت نیاز برای نزدیک یا دور کردن از گوشی: */
+    /* transform: translateX(-15px); */ /* عدد منفی = حرکت به چپ (نزدیک گوشی) */
+}
+
+
+@keyframes bounceWidget { 0% { transform: translateY(0); } 100% { transform: translateY(-15px); } }
+
+/* =================================================== */
+/* 📱 کدهای مخصوص موبایل و تبلت */
+/* =================================================== */
+@media screen and (max-width: 850px) {
+    
+    /* 🔴 اصلاح رنگ هاله‌ها برای موبایل */
+    .blob {
+        filter: blur(45px); /* کاهش محوشدگی تا رنگ غلیظ بماند */
+        opacity: 0.65; /* افزایش شفافیت */
+    }
+    .blob-1 { 
+        width: 120vw; /* بزرگتر شدن هاله تا کل صفحه را بپوشاند */
+        height: 120vw; 
+        top: -10%; left: -20%; 
+    }
+    .blob-2 { 
+        width: 130vw; 
+        height: 130vw; 
+        bottom: -10%; right: -20%; 
+    }
+
+    .content-box { width: 90% !important; max-width: 400px !important; top: auto !important; bottom: 25px !important; left: 50% !important; right: auto !important; transform: translateX(-50%) !important; padding: 25px !important; text-align: center !important; }
+    .macro-colors { justify-content: center !important; }
+    .logo-large { font-size: 4.5rem; }
+    .slogan { font-size: 1.2rem; }
+    h2 { font-size: 1.5rem; }
+    p { font-size: 1rem; }
+    .marquee { font-size: 25vw; }
+    
+    /* جایگاه ویجت‌ها در موبایل (گوشی وسط صفحه است) */
+    /* موبایل و تبلت: استفاده از مختصات دقیقِ محاسبه شده در جاوااسکریپت */
+    .floating-widget.widget-left {
+        right: var(--widget-left-pos); /* چسبیدن به لبه چپ گوشی */
+        left: auto;
+    }
+    
+    .floating-widget.widget-right {
+        left: var(--widget-right-pos); /* چسبیدن به لبه راست گوشی */
+        right: auto;
+        bottom: auto !important; /* حفظ جلوگیری از کشیدگی */
+    }
+    #widget-protein {
+        top: 20%; /* ارتفاع دلخواه فقط برای صفحه نمایش موبایل */
+        margin-right:-10% ;
+    }
+    /* تنظیم ارتفاع همان ویجت برای موبایل */
+    #widget-top-right {
+        top: 50%; /* این عدد را در موبایل تست کنید، معمولاً بین 8 تا 12 عالی است */
+    }
+    /* تنظیم جایگاه ویجت هدف برای موبایل */
+    #widget-goal {
+        top: 28%; /* ارتفاع مناسب برای موبایل تا روی منو نیاید */
+    }
+}
+
+/* =================================================== */
+/* 🟢 استایل‌های بخش محتوای استاتیک (PWA, Pricing, Footer) */
+/* =================================================== */
+
+.static-content {
+    position: relative;
+    z-index: 20; /* این لایه روی تمام فضای سه بعدی و انیمیشن ها قرار میگیرد */
+    background-color: #fcfdfd;
+    box-shadow: 0 -20px 50px rgba(135, 206, 235, 0.1);
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    padding-top: 80px;
+}
+
+.container { width: 90%; max-width: 1200px; margin: 0 auto; }
+.section-title { text-align: center; color: #87CEEB; font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; }
+.section-subtitle { text-align: center; color: #666; font-size: 1.1rem; margin-bottom: 10px; }
+.premium-note { text-align: center; color: #777; font-size: 1rem; font-weight: bold; margin-bottom: 60px; }
+
+/* --- بخش دریافت اپلیکیشن (طراحی پریمیوم) --- */
+.app-download { padding: 60px 0 120px; }
+.download-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 1000px; margin: 0 auto; }
+
+.premium-download-card {
+    background: #ffffff;
+    border-radius: 36px;
+    padding: 50px 40px;
+    box-shadow: 0 15px 45px rgba(135, 206, 235, 0.08);
+    border: 1px solid rgba(135, 206, 235, 0.15);
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.premium-download-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 60px rgba(135, 206, 235, 0.15);
+    border: 1px solid rgba(135, 206, 235, 0.4);
+}
+
+/* استایل آیکون‌های وکتور */
+.card-icon-wrapper { width: 75px; height: 75px; border-radius: 24px; display: flex; align-items: center; justify-content: center; margin-bottom: 25px; }
+.android-icon { background: #e8f5e9; color: #4caf50; }
+.ios-icon { background: #f5f5f7; color: #1d1d1f; }
+.card-icon-wrapper svg { width: 40px; height: 40px; fill: currentColor; }
+
+.premium-download-card h3 { font-size: 1.5rem; color: #333; margin-bottom: 12px; }
+.card-desc { text-align: center; color: #666; font-size: 0.95rem; line-height: 1.7; margin-bottom: 30px; }
+
+/* دکمه دانلود اندروید */
+.dl-btn { width: 100%; padding: 18px !important; font-size: 1.1rem; border-radius: 20px !important; margin-bottom: 25px; }
+
+/* باکس راهنمای مارکت‌ها (اندروید) */
+.market-note {
+    background: #fcfdfd;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    border: 1px dashed rgba(135, 206, 235, 0.5);
+    width: 100%;
+}
+.note-icon { font-size: 1.4rem; }
+.market-note p { font-size: 0.85rem; color: #555; text-align: right; margin: 0; line-height: 1.8; }
+
+/* مراحل نصب PWA (آیفون) */
+.pwa-steps-premium { width: 100%; display: flex; flex-direction: column; gap: 15px; }
+.step-premium {
+    display: flex; align-items: center; gap: 15px;
+    background: #fbfdff; padding: 16px 20px;
+    border-radius: 20px; border: 1px solid #f0f8ff;
+    text-align: right; transition: background 0.3s;
+}
+.step-premium:hover { background: #f0f8ff; }
+.step-num-premium {
+    min-width: 32px; height: 32px;
+    background: #87CEEB; color: #fff;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-weight: bold; font-family: 'Nunito', sans-serif; font-size: 1rem;
+}
+.step-premium span:last-child { color: #444; font-size: 0.9rem; line-height: 1.6; }
+
+/* --- پلن‌های اشتراک --- */
+.pricing { padding: 50px 0 100px; background-color: #f4fbfd; border-radius: 40px; margin: 0 5%; }
+.pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 900px; margin: 0 auto; }
+.pricing-card { background: #fff; padding: 50px 40px; border-radius: 30px; text-align: right; box-shadow: 0 15px 50px rgba(0,0,0,0.04); position: relative; }
+.pricing-card h3 { font-size: 1.5rem; color: #333; margin-bottom: 15px; }
+.price { font-size: 2rem; font-weight: bold; color: #87CEEB; margin-bottom: 30px; font-family: 'Nunito', sans-serif; }
+.features { list-style: none; margin-bottom: 40px; }
+.features li { margin-bottom: 15px; color: #444; font-size: 1.05rem; }
+.features .disabled { color: #aaa; text-decoration: line-through; }
+
+.premium-plan { border: 2px solid #87CEEB; transform: scale(1.05); box-shadow: 0 20px 60px rgba(135, 206, 235, 0.2); }
+.badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #87CEEB; color: #fff; padding: 5px 20px; border-radius: 20px; font-size: 0.9rem; font-weight: bold; }
+
+.btn-outline { display: block; text-align: center; padding: 15px; border: 2px solid #87CEEB; color: #87CEEB; border-radius: 30px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+.btn-outline:hover { background: #87CEEB; color: #fff; }
+.btn-solid { display: block; text-align: center; padding: 15px; background: #87CEEB; color: #fff; border-radius: 30px; text-decoration: none; font-weight: bold; transition: 0.3s; box-shadow: 0 5px 20px rgba(135, 206, 235, 0.4); }
+.btn-solid:hover { background: #6dbce0; transform: translateY(-3px); }
+
+/* --- دعوت به اقدام نهایی --- */
+.final-cta { padding: 120px 0; text-align: center; }
+.mt-4 { margin-top: 40px; display: inline-block; }
+.large-btn { padding: 18px 50px; font-size: 1.2rem; }
+
+/* --- فوتر --- */
+.footer { border-top: 1px solid #eee; padding: 40px 0; background: #fff; }
+.footer-flex { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+.footer-logo { font-family: 'Nunito', sans-serif; font-size: 2rem; font-weight: 900; color: #ccc; }
+.footer-links a { color: #777; text-decoration: none; margin-left: 20px; transition: 0.3s; }
+.footer-links a:hover { color: #87CEEB; }
+.footer-social { color: #999; font-size: 0.9rem; }
+
+
+/* =================================================== */
+/* 📱 ریسپانسیو محتوای استاتیک */
+/* =================================================== */
+@media screen and (max-width: 850px) {
+    .guide-grid { grid-template-columns: 1fr; }
+    .pricing { margin: 0; border-radius: 0; padding: 50px 20px; }
+    .pricing-grid { grid-template-columns: 1fr; gap: 30px; }
+    .premium-plan { transform: scale(1); }
+    .footer-flex { flex-direction: column; text-align: center; }
+    .footer-links a { margin: 0 10px; }
+    .download-grid { grid-template-columns: 1fr; gap: 30px; }
+}
+
+/* =================================================== */
+/* 🟢 استایل پاپ‌آپ‌ها (Modals) */
+/* =================================================== */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(8px);
+    z-index: 9999; display: flex; align-items: center; justify-content: center;
+    opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.modal-overlay.active { opacity: 1; visibility: visible; }
+
+.modal-box {
+    background: #fff; width: 90%; max-width: 550px;
+    border-radius: 28px; padding: 40px; position: relative;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+    transform: translateY(30px) scale(0.95);
+    opacity: 0; visibility: hidden; transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    /* مخفی بودن باکس ها به صورت پیش فرض */
+    position: absolute; 
+}
+.modal-box.active { transform: translateY(0) scale(1); opacity: 1; visibility: visible; position: relative; }
+
+.modal-close {
+    position: absolute; top: 20px; left: 20px; /* چون سایت راست‌چین است، دکمه چپ قرار میگیرد */
+    background: #f0f4f8; border: none; width: 36px; height: 36px;
+    border-radius: 50%; font-size: 1.5rem; color: #555;
+    cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.3s;
+}
+.modal-close:hover { background: #ffcdd2; color: #d32f2f; }
+
+.modal-title { color: #87CEEB; font-size: 1.6rem; margin-bottom: 15px; text-align: right; }
+.modal-desc { color: #666; line-height: 1.7; margin-bottom: 25px; text-align: right; font-size: 0.95rem; }
+
+.modal-list { list-style: none; text-align: right; }
+.modal-list li { background: #fbfdff; border: 1px solid #f0f8ff; padding: 15px; border-radius: 16px; margin-bottom: 10px; color: #444; font-size: 0.95rem; }
+.modal-list li strong { color: #333; margin-left: 5px; }
+
+/* برای متن‌های طولانی قوانین و حریم خصوصی */
+.modal-scroll-content { max-height: 60vh; overflow-y: auto; text-align: right; padding-left: 10px; }
+.modal-scroll-content p { color: #555; line-height: 1.8; margin-bottom: 15px; font-size: 0.95rem; background: #fbfdff; padding: 15px; border-radius: 16px; border: 1px solid #f0f8ff; }
+.modal-scroll-content p strong { color: #87CEEB; display: block; margin-bottom: 5px; font-size: 1.05rem; }
+
+/* استایل اسکرول بار داخل پاپ آپ */
+.modal-scroll-content::-webkit-scrollbar { width: 6px; }
+.modal-scroll-content::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+.modal-scroll-content::-webkit-scrollbar-thumb { background: #87CEEB; border-radius: 10px; }
